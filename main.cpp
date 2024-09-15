@@ -10,7 +10,6 @@ int main() {
     tools::ordenarDocumento(vectorDeLogs);
     tools::imprimirDocumento(vectorDeLogs);
 
-    //test
 
 
     return 0;
