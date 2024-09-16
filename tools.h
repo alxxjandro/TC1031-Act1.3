@@ -11,8 +11,9 @@ public:
     static string obtenerFechas(string log);
     static string tokenizarChar(string &str, char charAtokenizar);
     static void swapNumbers(string& a, string& b);
-    static void ordenaBurbuja(vector<string>&vectorOriginal, vector<string> &vectorFechas);
+    //static void ordenaBurbuja(vector<string>&vectorOriginal, vector<string> &vectorFechas);
     static void imprimirDocumento(vector<string> vectorAlmacen);
+    static void quickSort(vector<string> &vectorOriginal, vector<string> &vectorFechas, int inicio, int fin);
 };
 
 

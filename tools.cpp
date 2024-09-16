@@ -30,9 +30,11 @@ void tools::ordenarDocumento(vector<std::string> &vectorAlmacen) {
         //agregarla al inicio del original
         //vectorAlmacen[i] = tools::obtenerFechas(vectorAlmacen[i]) + vectorAlmacen[i];
     }
-    tools::ordenaBurbuja(vectorAlmacen, temporal);
-}
 
+    tools::quickSort(vectorAlmacen, temporal, 0, temporal.size()-1);
+
+}
+/*
 void tools::ordenaBurbuja(vector<string> &vectorOriginal, vector<string> &vectorFechas) {
     bool interruptor = true;
     int longitud = vectorFechas.size();
@@ -48,6 +50,36 @@ void tools::ordenaBurbuja(vector<string> &vectorOriginal, vector<string> &vector
                 interruptor = true;
             }
         }
+    }
+}
+*/
+void tools::quickSort(vector<string> &vectorOriginal, vector<string> &vectorFechas, int inicio, int fin) {
+    int izq = inicio, der = fin;
+    string pivote = vectorFechas[(izq + der) / 2];
+
+    do {
+        // Comparar las fechas para hacer el ordenamiento
+        while (vectorFechas[izq] < pivote && izq < fin) {
+            izq++;
+        }
+        while (vectorFechas[der] > pivote && der > inicio) {
+            der--;
+        }
+        if (izq <= der) {
+            // Intercambiar tanto en vectorFechas como en vectorOriginal
+            swap(vectorFechas[izq], vectorFechas[der]);
+            swap(vectorOriginal[izq], vectorOriginal[der]);
+            izq++;
+            der--;
+        }
+    } while (izq <= der);
+
+    // Llamadas recursivas
+    if (inicio < der) {
+        quickSort(vectorOriginal, vectorFechas, inicio, der);
+    }
+    if (izq < fin) {
+        quickSort(vectorOriginal, vectorFechas, izq, fin);
     }
 }
 
