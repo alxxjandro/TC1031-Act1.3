@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "act_1_3_2_0::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-act_1_3_2_0-Debug-fa1bccbcbcccbbe7a58b.json",
+					"jsonFile" : "target-act_1_3_2_0-Debug-e15731c9812f794b1826.json",
 					"name" : "act_1_3_2_0",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/alonsoparra/TC1031/act-1.3-2.0/cmake-build-debug",
-		"source" : "/Users/alonsoparra/TC1031/act-1.3-2.0"
+		"build" : "/Users/sam/Desktop/oko/cmake-build-debug",
+		"source" : "/Users/sam/Desktop/oko"
 	},
 	"version" : 
 	{
