@@ -119,3 +119,57 @@ void tools::imprimirDocumento(vector<std::string> vectorAlmacen) {
         cout << vectorAlmacen[i] << endl;
     }
 }
+
+void tools::busquedaDeFechas(vector<string>& vectorFechas) {
+    /* como estamos buscando por MM-DD puede que el que encuentre no sea el primero ent
+    recorremos para encontrar el primero y ultimo index respectivamente */
+    string busquedaInicial, busquedaFinal;
+    cout << "Introduce la fecha de inicio en el formato MM-DD (09-25): "; cin >> busquedaInicial;
+    cout << "Introduce la fecha final en el formato MM-DD (09-25): "; cin >> busquedaFinal;
+
+    int indexInicial = busquedaBinaria(vectorFechas, busquedaInicial);
+    int indexFinal = busquedaBinaria(vectorFechas, busquedaFinal);
+
+    if (indexInicial == -1 || indexFinal == -1) {
+        cout << "Fecha no encontrada." << endl;
+        return;
+    }
+    //encontrar el primer y el ultimo MM-DD igual
+    while (indexInicial > 0 && obtenerFechas(vectorFechas[indexInicial - 1]).substr(0, 5) == busquedaInicial) {
+        indexInicial--;
+    }
+    while (indexFinal < vectorFechas.size() - 1 && obtenerFechas(vectorFechas[indexFinal + 1]).substr(0, 5) == busquedaFinal) {
+        indexFinal++;
+    }
+    //imprimirlos
+    for (int i = indexInicial; i <= indexFinal ; ++i) {
+        cout << vectorFechas[i] << endl;
+    }
+}
+
+int tools::busquedaBinaria(const vector<string>& vectorFechas, const string& fechaBuscada) {
+    int inicio = 0;
+    int fin = vectorFechas.size() - 1;
+    int mejorMatch = -1;
+
+    while (inicio <= fin) {
+        int medio = inicio + (fin - inicio) / 2;
+
+        //"MM-DD-HH:MM:SS"
+        string fechaActualFormateada = tools::obtenerFechas(vectorFechas[medio]);
+        //convertir a "MM-DD"
+        string fechaActualCorta = fechaActualFormateada.substr(0, 5);
+
+        //buscar con "MM-DD"
+        if (fechaActualCorta == fechaBuscada) {
+            return medio;
+        }
+        if (fechaActualCorta < fechaBuscada) {
+            mejorMatch = medio;
+            inicio = medio + 1;
+        } else {
+            fin = medio - 1;
+        }
+    }
+    return mejorMatch;
+}
