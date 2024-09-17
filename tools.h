@@ -3,15 +3,16 @@
 #include <vector>
 using namespace std;
 
-
 class tools {
-public:
-    static void cargarDocumento(string rutaDocumento, vector<string> &vectorAlmacen);
-    static void ordenarDocumento(vector<string> &vectorAlmacen);
+private:
     static string obtenerFechas(string log);
     static string tokenizarChar(string &str, char charAtokenizar);
     static void swapNumbers(string& a, string& b);
     static void ordenaBurbuja(vector<string>&vectorOriginal, vector<string> &vectorFechas);
+    static void quickSort(vector<string> &vectorOriginal, vector<string> &vectorFechas, int inicio, int fin);
+public:
+    static void cargarDocumento(string rutaDocumento, vector<string> &vectorAlmacen);
+    static void ordenarDocumento(vector<string> &vectorAlmacen);
     static void imprimirDocumento(vector<string> vectorAlmacen);
 };
 
