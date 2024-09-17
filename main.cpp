@@ -8,9 +8,6 @@ int main() {
     tools::cargarDocumento("../bitacora.txt",vectorDeLogs);
     tools::ordenarDocumento(vectorDeLogs);
     //tools::imprimirDocumento(vectorDeLogs);
-
     tools::busquedaDeFechas(vectorDeLogs);
-
-
     return 0;
 }

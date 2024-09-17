@@ -33,24 +33,6 @@ void tools::ordenarDocumento(vector<std::string> &vectorAlmacen) {
     tools::quickSort(vectorAlmacen, temporal, 0, temporal.size()-1);
 }
 
-void tools::ordenaBurbuja(vector<string> &vectorOriginal, vector<string> &vectorFechas) {
-    bool interruptor = true;
-    int longitud = vectorFechas.size();
-    int tmp = 0;
-    for (int pasada = 0; pasada < longitud - 1 && interruptor; pasada++) {
-        interruptor = false;
-        for (int j = 0; j < longitud - 1 - pasada; j++) {
-            if (vectorFechas[j + 1] < vectorFechas[j]) {
-                // Intercambiar en vectorFechas
-                swapNumbers(vectorFechas[j], vectorFechas[j + 1]);
-                // Intercambiar en vectorOriginal
-                swapNumbers(vectorOriginal[j], vectorOriginal[j + 1]);
-                interruptor = true;
-            }
-        }
-    }
-}
-
 void tools::quickSort(vector<string> &vectorOriginal, vector<string> &vectorFechas, int inicio, int fin) {
     int izq = inicio, der = fin;
     string pivote = vectorFechas[(izq + der) / 2];
@@ -141,9 +123,12 @@ void tools::busquedaDeFechas(vector<string>& vectorFechas) {
     while (indexFinal < vectorFechas.size() - 1 && obtenerFechas(vectorFechas[indexFinal + 1]).substr(0, 5) == busquedaFinal) {
         indexFinal++;
     }
-    //imprimirlos
+    //imprimirlos y guardarlos
+    ofstream resultadosDeBusqueda;
+    resultadosDeBusqueda.open("../resultadosBusqueda.txt");
     for (int i = indexInicial; i <= indexFinal ; ++i) {
         cout << vectorFechas[i] << endl;
+        resultadosDeBusqueda << vectorFechas[i] + "\n";
     }
 }
 
