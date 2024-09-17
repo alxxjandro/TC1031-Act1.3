@@ -139,7 +139,6 @@ int tools::busquedaBinaria(const vector<string>& vectorFechas, const string& fec
 
     while (inicio <= fin) {
         int medio = inicio + (fin - inicio) / 2;
-
         //"MM-DD-HH:MM:SS"
         string fechaActualFormateada = tools::obtenerFechas(vectorFechas[medio]);
         //convertir a "MM-DD"
