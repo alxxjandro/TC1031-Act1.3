@@ -12,15 +12,9 @@ void tools::swapNumbers(string &a, string &b) {
 void tools::cargarDocumento(std::string rutaDocumento, vector<std::string> &vectorAlmacen) {
     ifstream archivo(rutaDocumento);
     string linea;
-    int test = 0;
-
     //si regresa true, es pq hay algo en la linea
     while(getline(archivo,linea)){
         vectorAlmacen.push_back(linea);
-        test++;
-        if(test == 16000){
-            return;
-        }
     }
     archivo.close();
 }
